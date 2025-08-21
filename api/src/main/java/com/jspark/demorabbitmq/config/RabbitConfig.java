@@ -1,0 +1,15 @@
+package com.jspark.demorabbitmq.config;
+
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+
+@Configuration
+public class RabbitConfig {
+
+    @Bean
+    public Queue demoeQueue(){
+        return new Queue("demo-queue",true);
+    }
+}
