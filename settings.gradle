@@ -1,2 +1,5 @@
 rootProject.name = 'mng-app'
 include 'api'
+include 'domain'
+include 'infra'
+include 'common'

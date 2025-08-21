@@ -1,4 +1,4 @@
-package com.jspark.demorabbitmq.controller;
+package com.jspark.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

@@ -1,4 +1,4 @@
-package com.jspark.demorabbitmq;
+package com.jspark;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

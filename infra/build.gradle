@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.3'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.jspark'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // 1. Spring Data JPA: JpaRepository 구현체를 동적으로 생성해주는 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
+    // 2. MS-SQL 드라이버: MSSQL DB와 통신하기 위한 JDBC 드라이버
+    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+
+    // 3. domain 모듈 의존: domain에 정의된 Entity와 Repository 인터페이스를 알아야 하므로
+    implementation project(':domain')
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+test {
+    useJUnitPlatform()
+}
