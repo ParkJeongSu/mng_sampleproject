@@ -21,6 +21,13 @@ dependencies {
     // 2. MS-SQL 드라이버: MSSQL DB와 통신하기 위한 JDBC 드라이버
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
 
+    // MapStruct 의존성
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // Lombok과 함께 사용하기 위한 설정 (Lombok -> MapStruct 순으로 실행되도록 보장)
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
     // 3. domain 모듈 의존: domain에 정의된 Entity와 Repository 인터페이스를 알아야 하므로
     implementation project(':domain')
     compileOnly 'org.projectlombok:lombok'
