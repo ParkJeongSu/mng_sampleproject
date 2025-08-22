@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.5.3'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 group = 'com.jspark'
@@ -9,6 +11,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -16,4 +24,17 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+// =======================================================
+// ▼▼▼▼▼▼▼▼▼▼ 이 부분을 추가하여 문제를 해결합니다 ▼▼▼▼▼▼▼▼▼▼
+// =======================================================
+// domain 모듈은 실행 가능한 애플리케이션이 아니므로 bootJar 태스크를 비활성화합니다.
+bootJar {
+    enabled = false
+}
+
+// 대신, 다른 모듈에서 의존성으로 사용할 수 있도록 표준 라이브러리 jar 태스크를 활성화합니다.
+jar {
+    enabled = true
 }
